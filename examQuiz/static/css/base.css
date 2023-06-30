@@ -30,3 +30,33 @@ body {
     width: 20%;
     height: 100%;
 }
+
+@media (max-width: 767px) {
+    .content-wraper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .range-wraper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80vw;
+        height: 30%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    
+    .btn-success {
+        position: relative;
+        right: 15px;
+    }
+    
+    .btn {
+        width: 80vw;
+        height: 50px;
+    }
+}
