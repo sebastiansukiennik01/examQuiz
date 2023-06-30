@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    
+</head>
+
+<body>
+    <div class="content-wraper">
+        <div class="qa-wraper">
+            <div class="question-label">
+                <h3>Pytanie {% block numer %} {% endblock %}</h3>
+            </div>
+            <div class="question-content">
+                {% block question %}
+                .... HERE WILL BE THE question....
+                {% endblock %}
+            </div>
+            <div class="answer-label">
+                <h3>Answer</h3>
+            </div>
+            <div class="answer-wrapper">
+                {% block answer %}
+                .... HERE WILL BE THE ANSWER....
+                {% endblock %}
+            </div>
+        </div>
+        <div class="range-wraper row">
+
+            <form method="post">
+                {% load crispy_forms_tags %}
+                {% csrf_token %}{{form|crispy}}
+                <div class="input-group mb-3">
+                    <span class="input-group-text"
+                        id="inputGroup-sizing-default">From</span>
+                    <input type="text" class="form-control" name="from"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default"
+                        value="{% block from %} {% endblock %}">
+
+                    <span class="input-group-text"
+                        id="inputGroup-sizing-default">To</span>
+                    <input type="text" class="form-control" name="to"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default"
+                        value="{% block to %} {% endblock %}">
+                </div>
+                <input class="btn btn-success" type="submit" name="next" value="NEXT" />
+            </form>
+
+
+
+            <button id="show-answer-button" class="btn btn-warning"
+                onclick="showAnswer()">Show Answer</button>
+
+
+        </div>
+    </div>
+
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{% extends 'questions/base.html' %}
+{% block numer %}
+{{nr}}
+{% endblock %}
+
+{% block question %}
+{{ question }}
+{% endblock %}
+
+{% block from %}
+{{ from }}
+{% endblock %}
+
+{% block to %}
+{{ to }}
+{% endblock %}
+
+
+{% block answer %}
+{% if show_answer %}
+
+{% else %}
+<script>
+    function showAnswer() {
+        document.getElementById('answer').style.display = 'block';
+    }
+</script>
+<p style="display: none;" id="answer">{{ answer }}</p>
+{% endif %}
+
+{% endblock %}
