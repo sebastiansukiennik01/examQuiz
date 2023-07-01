@@ -11,7 +11,7 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    
+
 </head>
 
 <body>
@@ -39,6 +39,8 @@
             <form method="post">
                 {% load crispy_forms_tags %}
                 {% csrf_token %}{{form|crispy}}
+                
+
                 <div class="input-group mb-3">
                     <span class="input-group-text"
                         id="inputGroup-sizing-default">From</span>
@@ -54,6 +56,9 @@
                         aria-describedby="inputGroup-sizing-default"
                         value="{% block to %} {% endblock %}">
                 </div>
+                <label for="myCheckbox">Losowe</label>
+                <input type="checkbox" name="random" {% block random %}checked{% endblock %}>
+
                 <input class="btn btn-success" type="submit" name="next" value="NEXT" />
             </form>
 

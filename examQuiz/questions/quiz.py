@@ -53,14 +53,27 @@ def display_random_question(questions, start: int = 0, end: int = 100):
         print("Answer:", random_question["a"])
         
 
-def get_random_question(start: int = 0, end: int = 100) -> dict:
-   
+def get_random_question(start: int = 0, end: int = 100, **kwargs) -> dict:
+    
+    r = kwargs.pop('r', True)
+    curr_q = kwargs.pop('curr_q', 0)
+    print(r, curr_q)
+    
+    
     start, end = check_input(start, end)
     print(f"Selecting from: {start} to: {end}")    
 
     with open('./questions/data/questions.json', 'r') as f:
         questions = json.load(f)
-    return  random.choice(questions[start:end])
+    if r:
+        return random.choice(questions[start:end])
+    else:
+        print(f"Selecting {curr_q+1} as next")
+        try:
+            return questions[curr_q]
+        except:
+            return random.choice(questions[start:end])
+        
 
 def check_input(start, end) -> tuple:
     
